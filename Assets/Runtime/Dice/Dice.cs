@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+
 public class Dice : MonoBehaviour
 {
     public enum FlipDirection

@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
 
         UnityEngine.Random.InitState(Seed.GetHashCode());
 
-        Goal.OnNoteEntered += (note) =>
+        Goal.OnNoteEntered += (note, lane) =>
         {
             var correct = Dice.Top == note.Number;
 
@@ -82,6 +82,9 @@ public class GameManager : MonoBehaviour
                     OnDeath?.Invoke();
                 }
             }
+
+            Dice.GetComponentInChildren<HitEffectSpawner>()
+                .DoEffect(lane, !correct);
 
             NoteSpawner.Despawn(note);
         };
