@@ -17,7 +17,6 @@ public class DiceController : MonoBehaviour
     void Update() {
         if (locked) {
             currentCooldown += Time.deltaTime;
-            Debug.Log(currentCooldown);
             if (currentCooldown > cooldown) {
                 locked = false;
                 currentCooldown = 0f;
@@ -43,7 +42,6 @@ public class DiceController : MonoBehaviour
         if (direction == FlipDirection.Right) dice.FlipRight(); 
         if (direction == FlipDirection.Left) dice.FlipLeft(); 
         locked = true;
-        Debug.Log(dice.Top);
     }
 
     

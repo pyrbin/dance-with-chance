@@ -153,7 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Seed: jottisisretard
-  Player: {fileID: 1745326796}
+  TrackPlayer: {fileID: 1745326796}
+  Dice: {fileID: 1163293437}
   NoteSpawner: {fileID: 1945919669}
   Goal: {fileID: 1852785513}
 --- !u!4 &92474373
@@ -521,6 +522,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1163293437 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1741274038579834849, guid: 87812385c1cb3544aa73ac664d9c07f2, type: 3}
+  m_PrefabInstance: {fileID: 1595294776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6c4d6401d1ca2d4f8242b0d93950dfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1198742308
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,6 +915,65 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1001 &1595294776
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1741274038579834850, guid: 87812385c1cb3544aa73ac664d9c07f2, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741274038579834850, guid: 87812385c1cb3544aa73ac664d9c07f2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741274038579834850, guid: 87812385c1cb3544aa73ac664d9c07f2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741274038579834850, guid: 87812385c1cb3544aa73ac664d9c07f2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741274038579834850, guid: 87812385c1cb3544aa73ac664d9c07f2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741274038579834850, guid: 87812385c1cb3544aa73ac664d9c07f2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741274038579834850, guid: 87812385c1cb3544aa73ac664d9c07f2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741274038579834850, guid: 87812385c1cb3544aa73ac664d9c07f2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741274038579834850, guid: 87812385c1cb3544aa73ac664d9c07f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741274038579834850, guid: 87812385c1cb3544aa73ac664d9c07f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741274038579834850, guid: 87812385c1cb3544aa73ac664d9c07f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741274038579834861, guid: 87812385c1cb3544aa73ac664d9c07f2, type: 3}
+      propertyPath: m_Name
+      value: Dice
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 87812385c1cb3544aa73ac664d9c07f2, type: 3}
 --- !u!1 &1745326795
 GameObject:
   m_ObjectHideFlags: 0

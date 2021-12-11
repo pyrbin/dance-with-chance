@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -7,7 +8,10 @@ public class GameManager : MonoBehaviour
     public string Seed = "SEED";
 
     [NaughtyAttributes.Required]
-    public TrackPlayer Player;
+    public TrackPlayer TrackPlayer;
+
+    [NaughtyAttributes.Required]
+    public Dice Dice;
 
     [NaughtyAttributes.Required]
     public NoteSpawner NoteSpawner;
@@ -15,12 +19,24 @@ public class GameManager : MonoBehaviour
     [NaughtyAttributes.Required]
     public Goal Goal;
 
-    public int Score {  get; set; }
+    public int Health = 3;
+
+    public int CurrentHealth { get; private set; }
+
+    public int Score { get; set; } = 0;
+
+    public event Action<Note> HitNote;
+
+    public event Action<Note> MissedNote;
+
+    public event Action<int> ScoreAdded;
+
+    public event Action OnDeath;
 
     [NaughtyAttributes.Button("Test Play")]
     public void TestPlay()
     {
-        Player.Play();
+        TrackPlayer.Play();
     }
 
     public static GameManager instance { get; private set; }
@@ -42,11 +58,30 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        CurrentHealth = Health;
+
         UnityEngine.Random.InitState(Seed.GetHashCode());
 
         Goal.OnNoteEntered += (note) =>
         {
-            // TODO(pyrbin) check if Dice has correct number for incoming dice.
+            var correct = Dice.Top == note.Number;
+
+            if (correct)
+            {
+                Score++;
+                ScoreAdded?.Invoke(Score);
+                HitNote?.Invoke(note);
+            }
+            else
+            {
+                MissedNote?.Invoke(note);
+                CurrentHealth--;
+
+                if (CurrentHealth == 0)
+                {
+                    OnDeath?.Invoke();
+                }
+            }
 
             NoteSpawner.Despawn(note);
         };
