@@ -32,7 +32,7 @@ public class DiceController : MonoBehaviour
     }
 
     public void DragReleased(float2 drag) {
-        if (locked || math.length(drag) > minimumDrag) return;
+        if (locked || math.length(drag) < minimumDrag) return;
         float angle = math.atan2(drag.x, drag.y)*180/math.PI;
         if (angle >= -45 && angle <= 45) Flip(FlipDirection.Down);
         if (angle >= -135 && angle <= -45) Flip(FlipDirection.Right);
