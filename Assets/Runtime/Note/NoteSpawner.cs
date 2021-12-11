@@ -54,7 +54,7 @@ public class NoteSpawner : MonoBehaviour
 
     public Note Spawn()
     {
-        var index = UnityEngine.Random.Range(0, SpawnPoints.Count - 1);
+        var index = UnityEngine.Random.Range(0, SpawnPoints.Count);
 
         var spawnPoint = (SpawnPoints[index]).transform.position;
         var note = (Instantiate(NotePrefab, spawnPoint, quaternion.identity, transform)).GetComponent<Note>();
