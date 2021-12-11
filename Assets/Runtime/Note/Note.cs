@@ -2,8 +2,14 @@ using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class Note : MonoBehaviour
 {
+
+    public Sprite[] SideSprites = new Sprite[6];
+
+    private SpriteRenderer Renderer;
+
     [NaughtyAttributes.ReadOnly]
     public int Number;
 
@@ -12,11 +18,15 @@ public class Note : MonoBehaviour
 
     private void Awake()
     {
+        TryGetComponent(out Renderer);
+
         Number = UnityEngine.Random.Range
         (
             GameManager.Settings.DiceRange.Min,
             GameManager.Settings.DiceRange.Max
         );
+
+        Renderer.sprite = SideSprites[Number-1];
     }
 
     public void Move(Transform target, float travelSpeed, float distanceOffset = 0)
