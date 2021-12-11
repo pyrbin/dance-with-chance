@@ -55,7 +55,6 @@ public class DiceController : MonoBehaviour
         if (direction == FlipDirection.Right) dice.FlipRight(); 
         if (direction == FlipDirection.Left) dice.FlipLeft(); 
         locked = true;
-        Debug.Log(dice.Top);
     }
 
     
