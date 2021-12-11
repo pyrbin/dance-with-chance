@@ -9,10 +9,15 @@ using static Dice;
 public class DiceController : MonoBehaviour
 {
     public Dice dice;
+    public PlayerHoldDrag holdDrag;
 
     public float cooldown = 0.3f;
     private float currentCooldown = 0f;
     private bool locked = false;
+
+    void Awake() {
+        holdDrag.Released += drag => DragReleased(drag);
+    }
 
     void Update() {
         if (locked) {
@@ -24,6 +29,15 @@ public class DiceController : MonoBehaviour
         }
     }
 
+    public void DragReleased(float2 drag) {
+        if (locked) return;
+        float angle = math.atan2(drag.x, drag.y)*180/math.PI;
+        if (angle >= -45 && angle <= 45) Flip(FlipDirection.Down);
+        if (angle >= -135 && angle <= -45) Flip(FlipDirection.Right);
+        if (angle >= 45 && angle <= 135) Flip(FlipDirection.Left);
+        if (angle <= -135 || angle >= 135) Flip(FlipDirection.Up);
+    }
+
     public void OnKeyPressed(InputAction.CallbackContext context) {
         if (locked) return;
         if (context.action.triggered) {
@@ -32,7 +46,6 @@ public class DiceController : MonoBehaviour
             if (direction == Vector2.up) Flip(FlipDirection.Up); 
             if (direction == Vector2.right) Flip(FlipDirection.Right); 
             if (direction == Vector2.left) Flip(FlipDirection.Left); 
-
         }
     }
 
