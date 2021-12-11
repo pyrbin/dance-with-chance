@@ -38,9 +38,8 @@ public class RotateDice : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
-    
-        transform.rotation = Quaternion.Euler(startingPos.x + end.x, startingPos.y + end.y, 0);
-
+        transform.RotateAround(transform.position, Vector3.up, end.y / seconds * Time.deltaTime);
+        transform.RotateAround(transform.position, Vector3.right, end.x / seconds * Time.deltaTime);
     }
 
     

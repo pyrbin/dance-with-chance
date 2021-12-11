@@ -11,6 +11,8 @@ public class DiceController : MonoBehaviour
     public Dice dice;
     public PlayerHoldDrag holdDrag;
 
+    public float minimumDrag = 1f;
+
     public float cooldown = 0.3f;
     private float currentCooldown = 0f;
     private bool locked = false;
@@ -30,7 +32,7 @@ public class DiceController : MonoBehaviour
     }
 
     public void DragReleased(float2 drag) {
-        if (locked) return;
+        if (locked || math.length(drag) > minimumDrag) return;
         float angle = math.atan2(drag.x, drag.y)*180/math.PI;
         if (angle >= -45 && angle <= 45) Flip(FlipDirection.Down);
         if (angle >= -135 && angle <= -45) Flip(FlipDirection.Right);
