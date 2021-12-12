@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Toilet Games
-  productName: minijam-95
+  productName: dance-with-chance
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.30980393, g: 0.5058824, b: 0.7372549, a: 1}

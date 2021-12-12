@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
 
     public event Action OnDeath;
 
+    [HideInInspector]
+    public int ComboCounter = 0;
+
     [NaughtyAttributes.Button("Test Play")]
     public void TestPlay()
     {
@@ -69,6 +72,7 @@ public class GameManager : MonoBehaviour
             if (correct)
             {
                 Score++;
+                ComboCounter++;
                 ScoreAdded?.Invoke(Score);
                 HitNote?.Invoke(note);
             }
@@ -76,7 +80,7 @@ public class GameManager : MonoBehaviour
             {
                 MissedNote?.Invoke(note);
                 CurrentHealth--;
-
+                ComboCounter = 0;
                 if (CurrentHealth == 0)
                 {
                     OnDeath?.Invoke();
