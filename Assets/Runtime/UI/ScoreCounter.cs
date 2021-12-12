@@ -8,19 +8,8 @@ public class ScoreCounter : MonoBehaviour
 {
     public TextMeshProUGUI text;
     public string prefix = "Score: ";
-
-    // Start is called before the first frame update
-    void Start()
+    void Update()
     {
-        SetScore(GameManager.instance.Score);
-        GameManager.instance.ScoreAdded += score => {
-            SetScore(score);
-        };
+        text.SetText(prefix + GameManager.Score);
     }
-
-    void SetScore(int score) {
-        text.SetText(prefix + score);
-    }
-
-
 }

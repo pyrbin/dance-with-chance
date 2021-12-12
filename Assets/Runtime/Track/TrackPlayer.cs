@@ -13,6 +13,8 @@ public class TrackPlayer : MonoBehaviour
     private float AheadTime;
     private Queue<float> noteBuffer;
 
+    private bool forceStop = false;
+
     void Awake()
     {
         Music = GetComponent<AudioSource>();
@@ -39,8 +41,15 @@ public class TrackPlayer : MonoBehaviour
         Track = track;
     }
 
+    public void Stop()
+    {
+        Music.Stop();
+        forceStop = true;
+    }
+
     public void Play()
     {
+        forceStop = false;
         var notes = Track.Notes.ToList();
         notes.Sort();
 
@@ -61,7 +70,7 @@ public class TrackPlayer : MonoBehaviour
 
     void Update()
     {
-        if (Music.isPlaying)
+        if (Music.isPlaying && !forceStop)
             WhenPlaying();
     }
 

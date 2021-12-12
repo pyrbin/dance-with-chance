@@ -1,7 +1,8 @@
 using System;
+using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,11 +24,13 @@ public class GameManager : MonoBehaviour
     [NaughtyAttributes.Required]
     public Goal Goal;
 
+    public List<GameObject> Lines;
+
     public int Health = 3;
 
     public int CurrentHealth { get; private set; }
 
-    public int Score { get; set; } = 0;
+    public static int Score { get; set; } = 0;
 
     public event Action<Note> HitNote;
 
@@ -35,17 +38,32 @@ public class GameManager : MonoBehaviour
 
     public event Action<int> ScoreAdded;
 
+    public event Action<int> ComboHappened;
+    public event Action ComboLost;
+
     public event Action OnDeath;
 
     [HideInInspector]
-    public int ComboCounter = 0;
+    public static int ComboCounter = 0;
 
     public static GameManager instance { get; private set; }
 
     public static class Settings
     {
         public static (int Min, int Max) DiceRange = (1, 6);
-        public static int ComboTarget = 5;
+    }
+
+    public static int ComboRound(int i)
+    {
+        return Math.Max(5, (int)(Math.Ceiling(i / 5f) * 5));
+    }
+
+    void ToggleComboEffects(bool status)
+    {
+        foreach (var item in Lines)
+        {
+            item.transform.GetChild(0).gameObject.SetActive(status);
+        }
     }
 
     void Awake()
@@ -71,24 +89,37 @@ public class GameManager : MonoBehaviour
             if (correct)
             {
                 Score++;
+
                 ComboCounter++;
                 ScoreAdded?.Invoke(Score);
                 HitNote?.Invoke(note);
 
-                if (ComboCounter == Settings.ComboTarget)
+                if (ComboCounter == ComboRound(ComboCounter))
                 {
+                    ToggleComboEffects(true);
                     CurrentHealth = math.min(CurrentHealth + 1, Health);
+                    ComboHappened?.Invoke(ComboCounter);
                 }
             }
             else
             {
                 MissedNote?.Invoke(note);
                 CurrentHealth--;
+
+                ToggleComboEffects(false);
+
+                if (ComboCounter > 0)
+                {
+                    ComboLost?.Invoke();
+                }
+
                 ComboCounter = 0;
 
                 if (CurrentHealth == 0)
                 {
+                    TrackPlayer.Stop();
                     OnDeath?.Invoke();
+                    SceneManager.LoadScene("GameOver");
                 }
             }
 
