@@ -131,6 +131,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        ComboCounter = 0;
+        Score = 0;
         TrackPlayer.Play();
     }
 }
