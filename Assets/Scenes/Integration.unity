@@ -144,10 +144,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1415010257}
     - target: {fileID: 3644457672467150332, guid: 2bc0bf43dffe10a4eb09c726a37cef09, type: 3}
-      propertyPath: Seed
-      value: hahhalolxd
-      objectReference: {fileID: 0}
-    - target: {fileID: 3644457672467150332, guid: 2bc0bf43dffe10a4eb09c726a37cef09, type: 3}
       propertyPath: NoteSpawner
       value: 
       objectReference: {fileID: 1823652353}
@@ -159,6 +155,22 @@ PrefabInstance:
       propertyPath: HitEffectSpawner
       value: 
       objectReference: {fileID: 6120290499545635435}
+    - target: {fileID: 3644457672467150332, guid: 2bc0bf43dffe10a4eb09c726a37cef09, type: 3}
+      propertyPath: Lines.Array.data[0]
+      value: 
+      objectReference: {fileID: 1548153934}
+    - target: {fileID: 3644457672467150332, guid: 2bc0bf43dffe10a4eb09c726a37cef09, type: 3}
+      propertyPath: Lines.Array.data[1]
+      value: 
+      objectReference: {fileID: 1548153933}
+    - target: {fileID: 3644457672467150332, guid: 2bc0bf43dffe10a4eb09c726a37cef09, type: 3}
+      propertyPath: Lines.Array.data[2]
+      value: 
+      objectReference: {fileID: 1548153932}
+    - target: {fileID: 3644457672467150332, guid: 2bc0bf43dffe10a4eb09c726a37cef09, type: 3}
+      propertyPath: Lines.Array.data[3]
+      value: 
+      objectReference: {fileID: 1548153931}
     - target: {fileID: 3644457672467150333, guid: 2bc0bf43dffe10a4eb09c726a37cef09, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -961,6 +973,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1364735804, guid: fcf5573a4fa5a314c82b61ead548f19f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3854890314665272912, guid: fcf5573a4fa5a314c82b61ead548f19f, type: 3}
       propertyPath: m_Name
       value: Environment
@@ -1012,6 +1028,26 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: fcf5573a4fa5a314c82b61ead548f19f, type: 3}
+--- !u!1 &1548153931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3854890315679222932, guid: fcf5573a4fa5a314c82b61ead548f19f, type: 3}
+  m_PrefabInstance: {fileID: 1548153930}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1548153932 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3854890314446467560, guid: fcf5573a4fa5a314c82b61ead548f19f, type: 3}
+  m_PrefabInstance: {fileID: 1548153930}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1548153933 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3854890314926847627, guid: fcf5573a4fa5a314c82b61ead548f19f, type: 3}
+  m_PrefabInstance: {fileID: 1548153930}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1548153934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3854890315301191561, guid: fcf5573a4fa5a314c82b61ead548f19f, type: 3}
+  m_PrefabInstance: {fileID: 1548153930}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1747499701
 GameObject:
   m_ObjectHideFlags: 0
