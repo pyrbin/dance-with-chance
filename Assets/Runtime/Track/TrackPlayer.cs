@@ -13,7 +13,8 @@ public class TrackPlayer : MonoBehaviour
     private float AheadTime;
     private Queue<float> noteBuffer;
 
-    private bool forceStop = false;
+    private bool isPlaying = false;
+    private bool pitchChangeGuard = false;
 
     void Awake()
     {
@@ -44,16 +45,14 @@ public class TrackPlayer : MonoBehaviour
     public void Stop()
     {
         Music.Stop();
-        forceStop = true;
+        isPlaying = false;
     }
 
-    public void Play()
+    public void Play(float pitch = 1f)
     {
-        forceStop = false;
-        var notes = Track.Notes.ToList();
-        notes.Sort();
-
-        noteBuffer = new Queue<float>(notes);
+        Music.pitch = pitch;
+        isPlaying = true;
+        InitTrackNotes();
 
         if (Music.isPlaying)
         {
@@ -68,15 +67,43 @@ public class TrackPlayer : MonoBehaviour
         }
     }
 
+    void InitTrackNotes()
+    {
+        var notes = Track.Notes.ToList();
+        notes.Sort();
+        noteBuffer = new Queue<float>(notes);
+    }
+
     void Update()
     {
-        if (Music.isPlaying && !forceStop)
+        if (Music.isPlaying && isPlaying)
+        {
             WhenPlaying();
+        }
     }
 
     void WhenPlaying()
     {
-        if (noteBuffer is not { Count: > 0 }) return;
+        const float approxOffset = 0.099999f;
+
+        if (Music.clip.length - Music.time <= approxOffset && !pitchChangeGuard)
+        {
+            Music.pitch += 0.15f;
+            pitchChangeGuard = true;
+            InitTrackNotes();
+            return;
+        }
+
+        if (Music.time < approxOffset && Music.time >= 0)
+        {
+            pitchChangeGuard = false;
+        }
+
+
+        if (noteBuffer is not { Count: > 0 })
+        {
+            return;
+        }
         
         var next = noteBuffer.ElementAt(0);
 
