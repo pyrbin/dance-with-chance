@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
 
     public event Action<int> ScoreAdded;
 
+    public event Action<int> ComboHappened;
+    public event Action ComboLost;
+
     public event Action OnDeath;
 
     [HideInInspector]
@@ -95,6 +98,7 @@ public class GameManager : MonoBehaviour
                 {
                     ToggleComboEffects(true);
                     CurrentHealth = math.min(CurrentHealth + 1, Health);
+                    ComboHappened?.Invoke(ComboCounter);
                 }
             }
             else
@@ -103,6 +107,11 @@ public class GameManager : MonoBehaviour
                 CurrentHealth--;
 
                 ToggleComboEffects(false);
+
+                if (ComboCounter > 0)
+                {
+                    ComboLost?.Invoke();
+                }
 
                 ComboCounter = 0;
 
