@@ -1,32 +1,24 @@
 <p align="center" >
-  <img width="600" src="https://i.imgur.com/gsU3fCr.png"/>
+  <img width="600" src="https://i.imgur.com/alDTv6J.png"/>
 </p>
 
-## 
+##
 
-Entry created in Unity for the game-jam  [Mini-Jam 91](https://itch.io/jam/mini-jam-91-ufo).
+Entry created in Unity for the game-jam  [Mini-Jam 05](https://itch.io/jam/mini-jam-95-chance).
 
-| Theme | Limitation |
-| -     | -          |
-| UFO | Fish as a mechanic   |
+| Theme  | Limitation|
+| -      | -         |
+| Chance | No RNG    |
 
 ## Game
-Defend your city from invading aliens by fishing and catapulting mutated fish & use their abilities.
+Dance with Chance (the dice) to some funky tunes by performing the correct moves at the right time 🎶.
 
 ## Controls
-* **Mouse1 (while fishing)** - Drag to fish & hold to reel in
-* **Mouse1** - Hold & drag to throw fish in a direction
-* **Space** - Use fish power
-
-## Fish spells
-* **Puffer** - Hold space to grow, release to explode.
-* **Pike** - Press space to charge
-* **Squid** - Press space to spray ink (disabled enemies for a long period)
-* **Goldfish** - 🐠💩
+* **Mouse1** or **WASD/Arrows**- Flip the dice to one side
 
 #### Made by Frans, Jottis, Isak & James
 ---
 
 <p align="center">
-    <b><i><a href="https://pyrbin.itch.io/hook-line-and-saucer">itch.io/hook-line-and-saucer</a></b></i>
+    <b><i><a href="https://pyrbin.itch.io/dance-with-chance">itch.io/dance-with-chance</a></b></i>
 </p>
