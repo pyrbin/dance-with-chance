@@ -11,20 +11,11 @@ public class HealthBar : MonoBehaviour
 
     public Image image;
 
-    // Start is called before the first frame update
-    void Start()
+
+    void Update()
     {
-        SetHealth(GameManager.instance.Health);
-        GameManager.instance.MissedNote += Note => {
-            SetHealth(GameManager.instance.CurrentHealth);
-        };
+        if (GameManager.instance.CurrentHealth == 3) image.sprite = ThreeLivesSprite;
+        if (GameManager.instance.CurrentHealth == 2) image.sprite = TwoLivesSprite;
+        if (GameManager.instance.CurrentHealth == 1) image.sprite = OneLifeSprite;
     }
-
-    void SetHealth(int health) {
-        if (health == 3) image.sprite = ThreeLivesSprite;
-        if (health == 2) image.sprite = TwoLivesSprite;
-        if (health == 1) image.sprite = OneLifeSprite;
-    }
-
-
 }

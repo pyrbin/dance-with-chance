@@ -7,6 +7,6 @@ public class ComboCounter : MonoBehaviour
 
     void Update()
     {
-        Text.SetText($"{GameManager.instance.ComboCounter % GameManager.Settings.ComboTarget}/{GameManager.Settings.ComboTarget}");
+        Text.SetText($"{GameManager.ComboCounter}/{GameManager.ComboRound(GameManager.ComboCounter)}");
     }
 }
