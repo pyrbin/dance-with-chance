@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 
@@ -15,6 +16,9 @@ public class GameManager : MonoBehaviour
 
     [NaughtyAttributes.Required]
     public NoteSpawner NoteSpawner;
+
+    [NaughtyAttributes.Required]
+    public HitEffectSpawner HitEffectSpawner;
 
     [NaughtyAttributes.Required]
     public Goal Goal;
@@ -36,17 +40,12 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int ComboCounter = 0;
 
-    [NaughtyAttributes.Button("Test Play")]
-    public void TestPlay()
-    {
-        TrackPlayer.Play();
-    }
-
     public static GameManager instance { get; private set; }
 
     public static class Settings
     {
         public static (int Min, int Max) DiceRange = (1, 6);
+        public static int ComboTarget = 5;
     }
 
     void Awake()
@@ -75,22 +74,32 @@ public class GameManager : MonoBehaviour
                 ComboCounter++;
                 ScoreAdded?.Invoke(Score);
                 HitNote?.Invoke(note);
+
+                if (ComboCounter == Settings.ComboTarget)
+                {
+                    CurrentHealth = math.min(CurrentHealth + 1, Health);
+                }
             }
             else
             {
                 MissedNote?.Invoke(note);
                 CurrentHealth--;
                 ComboCounter = 0;
+
                 if (CurrentHealth == 0)
                 {
                     OnDeath?.Invoke();
                 }
             }
 
-            Dice.GetComponentInChildren<HitEffectSpawner>()
-                .DoEffect(lane, !correct);
+            HitEffectSpawner.DoEffect(lane, !correct);
 
             NoteSpawner.Despawn(note);
         };
+    }
+
+    void Start()
+    {
+        TrackPlayer.Play();
     }
 }
