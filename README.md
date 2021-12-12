@@ -4,7 +4,7 @@
 
 ##
 
-Entry created in Unity for the game-jam  [Mini-Jam 05](https://itch.io/jam/mini-jam-95-chance).
+Entry created in Unity for the game-jam  [Mini-Jam 95](https://itch.io/jam/mini-jam-95-chance).
 
 | Theme  | Limitation|
 | -      | -         |
