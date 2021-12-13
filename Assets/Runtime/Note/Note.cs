@@ -23,7 +23,7 @@ public class Note : MonoBehaviour
         Number = UnityEngine.Random.Range
         (
             GameManager.Settings.DiceRange.Min,
-            GameManager.Settings.DiceRange.Max
+            GameManager.Settings.DiceRange.Max+1
         );
 
         Renderer.sprite = SideSprites[Number-1];
